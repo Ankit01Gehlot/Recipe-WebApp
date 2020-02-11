@@ -1,0 +1,17 @@
+{% extends 'WebApp/base.html' %}
+
+{% block content %}
+    {% for dish in dishs %}
+        {% if dish.user_id == request.user %}
+            <div class="dish">
+                <a class="btn btn-default" href="{% url 'dish_edit' pk=dish.pk %}" title="Click to edit recipe"><span class="glyphicon glyphicon-pencil"></span></a>
+                <h2><a href="{% url 'dish_detail' pk=dish.pk %}">{{dish.title }}</a></h2>
+                <div class="date">
+                    <p>Type: {{ dish.tag }}</p><p>  Time to cook: {{ dish.timeToCook }}</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+<!---->

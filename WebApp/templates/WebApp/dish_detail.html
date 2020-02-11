@@ -1,0 +1,18 @@
+{% extends 'WebApp/base.html' %}
+
+{% block content %}
+    <div class="dish">
+        {% if dish.user_id == request.user %}
+            <a class="btn btn-default" href="{% url 'dish_edit' pk=dish.pk %}" title="Click to edit recipe"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <img src = "{{dish.imageUrl}}" alt = "{{dish.title}}">
+        <h2>{{ dish.title }}</h2>
+        <h4><b>Type:</b> {{ dish.tag }}</h4>
+        <h4><b>Time to cook:</b> {{ dish.timeToCook }}</h4>
+        <h4><p><b> Ingredients:</b> {{ dish.ingredients|linebreaksbr }} </p></h4>
+        <h4><p><b> Directions:</b> {{ dish.direction|linebreaksbr }}</p> </h4>
+        <div class="date">
+            <h5><b>Last Update:</b> {{ dish.last_update }}</h5>
+        </div>
+    </div>
+{% endblock %}

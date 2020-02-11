@@ -1,0 +1,42 @@
+{% load static %}
+
+<html>
+    <head>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/WebApp.css' %}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <title>Recipes</title>
+    </head>
+    <body>
+        <div class="page-header">
+        <div style="float:right; padding-top:13px">
+            <form method="GET" action="{% url 'search' %}">
+                <input type="text" placeholder="Search....." name="q" value="{{ request.GET.q }}">
+                <button type="submit">search</button>
+            </form>
+        </div>
+        <div style="float:right">
+            {% if user.is_authenticated %}
+                <a href="{% url 'new_dish' %}" style="padding-right:15px; font-size: 26pt; color: #ffffff; float=left; padding-left:20px;" title="click to add new recipes"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'my_recipe' %}" title="Added Recipes" style="font-size:160%; padding-right:10px; color: #ffffff;">My Recipes</a>
+                <a href="{% url 'logout'%}" title="Logout" style="font-size:160%; padding-left:10px; padding-right:20px; color: #ffffff;">Logout</a>
+                {% else %}
+                <a href="{% url 'login_url'%}" title="Login" style="font-size:160%; padding-right:10px; color: #ffffff; padding-top:25px;">Login</a>
+                <a href="{% url 'signup' %}" title="Register yourself" style="font-size:160%; padding-left:10px; padding-right:15px; padding-top:16px; color: #ffffff;">Register</a>
+            {% endif %}
+            
+        </div>
+            <h1><a href="/" title="Home">Recipes</a></h1>
+            
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

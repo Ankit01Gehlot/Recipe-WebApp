@@ -1,0 +1,16 @@
+{% extends 'WebApp/base.html' %}
+
+{% block content %}
+    {% for dish in dishs %}
+        <div class="dish">
+            <img src = "{{dish.imageUrl}}" alt = "{{dish.title}}">
+            <h2><a href="{% url 'dish_detail' pk=dish.pk %}">{{dish.title }}</a></h2>
+            <div class="date">
+                <p>Type: {{ dish.tag }}</p><p>  Time to cook: {{ dish.timeToCook }}</p>
+            </div>
+        </div>
+        
+    {% endfor %}
+{% endblock %}
+
+<!---->
