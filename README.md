@@ -1,6 +1,6 @@
 # Recipe-WebApp
 In this WebApp users can search for recipes by their name or ingredients.
-User (if logged in) can also add their recipes and also edit their uploaded recipes.
+User (if logged in) can add their recipes and edit their uploaded recipes.
 Home shows list of all recipes.
 
 Backend is build using Python3 and Django 3.0
@@ -24,5 +24,3 @@ To run local server on your computer
 
 Open Browser and enter "http://127.0.0.1:8000/"  this will take you to the home page.
 
-username = ankit
-password = 231094
